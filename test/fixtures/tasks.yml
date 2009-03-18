@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  priority: 1
+  completed: false
+
+two:
+  name: MyString
+  priority: 1
+  completed: false
