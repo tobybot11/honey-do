@@ -1,0 +1,43 @@
+<!-- app/views/tasks/index.html.erb -->
+
+<h1>My Tasks</h1>
+
+<!-- Partial include which contains our task list -->
+<div id="task_list">
+	<%= render :partial => "task_list", :locals => { :tasks => @tasks } %>
+</div>
+
+<!-- Javascript / scriptaculous call to show form -->
+<a href="#" onclick="$('task_name').clear();
+	<!-- Clear the form list -->
+		Effect.BlindDown('task_form');
+		return false;">Add Task</a>
+		
+<!-- Here is our 'add task' form. It is hidden by default -->
+<div id="task_form" style="display: none;">
+
+<!-- Using the form_remote_tag which builds the AJAX code for us -->
+<% form_remote_tag :url => { :action => "create" },
+					:update => "task_list",
+					:complete => visual_effect(:fade, "task_form") do %>
+					
+					<p>
+						<%= label(:task, :name) %>
+						<%= text_field :task, :name, :size => 38 %>
+					</p>
+					
+					<p>
+						<%= label(:task, :priority) %>
+						<%= select(:task, :priority, Task.priorities) %>
+					</p>
+					
+	<%= submit_tag "Add Task", :class => "submit" %>
+	
+<!-- One more scriptaculous effect to hide the form -->
+
+	<%= button_to_function "Nevermind",
+	 			visual_effect(:fade, "task_form"), :class => "submit" %>
+	
+	<% end %>
+
+
