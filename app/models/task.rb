@@ -12,7 +12,7 @@ class Task < ActiveRecord::Base
   
   # Helper method to get open tasks sorted by priority
   def self.open_tasks
-    Task.find(:all, :order => [:priority], :conditions => ["comleted = ?", false])
+    Task.find(:all, :order => [:priority], :conditions => ["completed = ?", false])
     
   end
 end

@@ -1,0 +1,20 @@
+
+<ul>
+	<% @tasks.each do |task| %>
+	<li>
+		<table widht="100%">
+			<tr>
+				<td align="left">
+					<%= task.priority %> - <%= task.name %>
+				</td>
+				<td align="right">
+					<%= link_to_remote "Mark as Complete", 
+						:url => { :action => "complete", :id => task },
+						:update => "task_list"
+						%>
+				</td>
+			</tr>
+		</table>
+	</li>
+	<% end %>
+</ul>
