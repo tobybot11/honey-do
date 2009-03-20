@@ -22,7 +22,7 @@ class TasksController < ApplicationController
   # 'app/views/tasks/_task_list.html.erb' partial
   def complete
     task = Task.find(params[:id])
-    task.completd = false
+    task.completed = false
     unless task.save
       flash[:error] = "Unable to mark task as completed"
     end
